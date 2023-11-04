@@ -1,12 +1,13 @@
 'use client'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'; Sheet
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
 
 import { Home, ListOrderedIcon, LogInIcon, LogOutIcon, MenuIcon, PercentIcon, ShoppingCartIcon } from 'lucide-react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import { Separator } from './separator';
+import Link from 'next/link';
 
 const Header = () => {
 
@@ -67,19 +68,27 @@ const Header = () => {
                 Fazer logout
               </Button>
             )}
-            <Button variant="outline" className='w-full justify-start gap-2'>
-              <Home size={16} />
-              Início
-            </Button>
+
+            <Link href="/">
+              <Button variant="outline" className='w-full justify-start gap-2'>
+                <Home size={16} />
+                Início
+              </Button>
+            </Link>
+
             <Button variant="outline" className='w-full justify-start gap-2'>
               <PercentIcon size={16} />
               Ofertas
             </Button>
-            <Button variant="outline" className='w-full justify-start gap-2'>
-              <ListOrderedIcon size={16} />
-              Catálogo
-            </Button>
 
+            <SheetClose asChild>
+              <Link href="/catalog">
+                <Button variant="outline" className='w-full justify-start gap-2'>
+                  <ListOrderedIcon size={16} />
+                  Catálogo
+                </Button>
+              </Link>
+            </SheetClose>
           </div>
 
         </SheetContent>
