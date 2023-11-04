@@ -1,5 +1,4 @@
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { Product } from "@prisma/client";
 import Image from "next/image";
 import { Badge } from "./badge";
 import { ArrowDownIcon } from "lucide-react";
@@ -33,7 +32,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
       <div className="flex flex-col gap-1">
         <p className="text-sm overflow-hidden whitespace-nowrap text-ellipsis">{product.name}</p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-sm overflow-hidden whitespace-nowrap text-ellipsis">
           {product.discountPercent > 0 ? (
             <>
               <p className="font-semibold">R$ {product.totalPrice.toFixed(2)}</p>
